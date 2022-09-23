@@ -16,5 +16,5 @@ This will install all the necessary dependencies and will start the service.
 
 ## Endpoint for checking
 
-`/analyze` route that accepts POST requests and multipart/form-data information. which returns a true or flase 
-`/detect` route that accepts POST requests and multipart/form-data information, which returns a ratio of safe and unsafe
+`/analyze` route that accepts POST requests and multipart/form-data information. which returns a true or flase.
+`/detect` route that accepts POST requests and multipart/form-data information, which returns a ratio of safe and unsafe.
