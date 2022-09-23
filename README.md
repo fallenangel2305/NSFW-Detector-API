@@ -16,4 +16,5 @@ This will install all the necessary dependencies and will start the service.
 
 ## Endpoint for checking
 
-`/analyze` is the one and only route that accepts POST requests and multipart/form-data information. This is the route which scans all media that was sent by the payload
+`/analyze` route that accepts POST requests and multipart/form-data information. which returns a true or flase 
+`/detect` route that accepts POST requests and multipart/form-data information, which returns a ratio of safe and unsafe
