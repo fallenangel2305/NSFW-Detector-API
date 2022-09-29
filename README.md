@@ -1,6 +1,6 @@
-## py-nudec
+## NSFW-Detector-API
 
-__py-nudec__ (python nude detector) is a microservice, which scans all the images and videos from the multipart/form-data request payload and sends a response with a boolean value which indicates if all content has passed the checks.
+NSFW-Detector-API is a microservice, which scans all the images and videos from the multipart/form-data request payload and sends a response.
 
 This service uses [NudeNet](https://github.com/notAI-tech/NudeNet) created by [notAI-tech](https://github.com/notAI-tech)
 
