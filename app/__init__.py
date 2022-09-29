@@ -1,8 +1,10 @@
 import os
 from nudenet import NudeDetector,NudeClassifier
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app, resources={r"*": {"origins": "*"}})
 detector = NudeDetector()
 classifier = NudeClassifier()
 app.config["UPLOAD_FOLDER"] = "./upload"
@@ -46,13 +48,15 @@ def AnalyzeImage():
     return jsonify(["is_safe",valid])
 @app.route("/detect", methods=["POST"])
 def ClassifyImage():
-    print("Testing")
+    print("Checking image ...")
     # For tracking media validity
     is_nude = []
 
     # Looping through each field in the request
+    
     for field in request.files:
         file = request.files.get(field)
+       
         type = file.mimetype.split("/")
         mime = type[0]
 
@@ -62,8 +66,8 @@ def ClassifyImage():
             file.save(path)
 
             if mime == "image":
-                is_nude.append( classifier.classify(path))
-                
+                is_nude = classifier.classify(path)
+                print(is_nude.get(path))
                     
 
             # Removing the temporary file
@@ -72,8 +76,8 @@ def ClassifyImage():
         # If the file doesn't pass mimetype checks
         else:
             pass
-
-    return jsonify(is_nude)
+   
+    return is_nude.get(path)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0", port=5000,debug=True,use_reloader=True)
